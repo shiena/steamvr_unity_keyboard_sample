@@ -34,7 +34,7 @@ public class SteamVR_GameView : MonoBehaviour
 		var y1 = -aspect;
 
 		var blitMaterial = SteamVR_Camera.blitMaterial;
-		blitMaterial.mainTexture = SteamVR_Camera.GetSceneTexture(camera.hdr);
+		blitMaterial.mainTexture = SteamVR_Camera.GetSceneTexture(camera.allowHDR);
 
 		GL.PushMatrix();
 		GL.LoadOrtho();

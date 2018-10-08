@@ -57,7 +57,7 @@ public class SteamVR : System.IDisposable
 		get
 		{
 #if !(UNITY_5_3 || UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
-			return UnityEngine.VR.VRDevice.GetNativePtr() != System.IntPtr.Zero;
+			return UnityEngine.XR.XRDevice.GetNativePtr() != System.IntPtr.Zero;
 #else
 			return false;
 #endif

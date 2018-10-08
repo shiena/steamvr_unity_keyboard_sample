@@ -221,7 +221,7 @@ public class SteamVR_Render : MonoBehaviour
 			cameraMask.transform.position = c.transform.position;
 
 			var camera = c.GetComponent<Camera>();
-			camera.targetTexture = SteamVR_Camera.GetSceneTexture(camera.hdr);
+			camera.targetTexture = SteamVR_Camera.GetSceneTexture(camera.allowHDR);
 			int cullingMask = camera.cullingMask;
 			if (eye == EVREye.Eye_Left)
 			{
