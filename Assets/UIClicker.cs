@@ -30,7 +30,8 @@ public class UIClicker : MonoBehaviour
 
 				uint controllerIndex = (uint)pointer.GetComponent<SteamVR_TrackedObject>().index;
 				Valve.VR.VRControllerState_t controllerState = new Valve.VR.VRControllerState_t();
-				if (SteamVR.instance.hmd.GetControllerState(controllerIndex, ref controllerState))
+				uint size = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(Valve.VR.VRControllerState_t));
+				if (SteamVR.instance.hmd.GetControllerState(controllerIndex, ref controllerState, size))
 				{
 					bool trigger = (controllerState.ulButtonPressed & (1UL << ((int)Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))) > 0;
 					if (hit && Clicked != null && trigger)

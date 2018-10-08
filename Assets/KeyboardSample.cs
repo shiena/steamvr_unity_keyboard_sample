@@ -9,6 +9,14 @@ public class KeyboardSample : MonoBehaviour
 	static bool keyboardShowing;
 	string text = "";
 	static KeyboardSample activeKeyboard = null;
+	private SteamVR_Events.Action keyboardCharInputAction;
+	private SteamVR_Events.Action keyboardClosedAction;
+
+	KeyboardSample()
+	{
+		keyboardCharInputAction = SteamVR_Events.SystemAction(EVREventType.VREvent_KeyboardCharInput, OnKeyboard);
+		keyboardClosedAction = SteamVR_Events.SystemAction(EVREventType.VREvent_KeyboardClosed, OnKeyboardClosed);
+	}
 
 	// Use this for initialization
 	void Start ()
@@ -18,15 +26,28 @@ public class KeyboardSample : MonoBehaviour
 
 	void OnEnable()
 	{
-		SteamVR_Utils.Event.Listen("KeyboardCharInput", OnKeyboard);
-		SteamVR_Utils.Event.Listen("KeyboardClosed", OnKeyboardClosed);
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                return;
+#endif
+		keyboardCharInputAction.enabled = true;
+		keyboardClosedAction.enabled = true;
 	}
 
-	private void OnKeyboard(object[] args)
+	void OnDisable()
+	{
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                return;
+#endif
+		keyboardCharInputAction.enabled = false;
+		keyboardClosedAction.enabled = false;
+	}
+
+	private void OnKeyboard(VREvent_t ev)
 	{
 		if (activeKeyboard != this)
 			return;
-		Valve.VR.VREvent_t ev = (Valve.VR.VREvent_t)args[0];
 		VREvent_Keyboard_t keyboard = ev.data.keyboard;
 		byte[] inputBytes = new byte[] { keyboard.cNewInput0, keyboard.cNewInput1, keyboard.cNewInput2, keyboard.cNewInput3, keyboard.cNewInput4, keyboard.cNewInput5, keyboard.cNewInput6, keyboard.cNewInput7 };
 		int len = 0;
@@ -64,7 +85,7 @@ public class KeyboardSample : MonoBehaviour
 		}
 	}
 
-	private void OnKeyboardClosed(object[] args)
+	private void OnKeyboardClosed(VREvent_t ev)
 	{
 		if (activeKeyboard != this)
 			return;
