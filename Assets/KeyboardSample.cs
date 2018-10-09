@@ -99,7 +99,7 @@ public class KeyboardSample : MonoBehaviour
 		{
 			keyboardShowing = true;
 			activeKeyboard = this;
-			SteamVR.instance.overlay.ShowKeyboard(0, 0, "Description", 256, text, minimalMode, 0);
+			SteamVR.instance.overlay.ShowKeyboard((int)EGamepadTextInputMode.k_EGamepadTextInputModeNormal, (int)EGamepadTextInputLineMode.k_EGamepadTextInputLineModeSingleLine, "Description", 256, text, minimalMode, 0);
 		}
 	}
 
