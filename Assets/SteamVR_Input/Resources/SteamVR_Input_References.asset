@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d10323487cb44348b830bc017eb40b4, type: 3}
+  m_Name: SteamVR_Input_References
+  m_EditorClassIdentifier: 
+  actionSetNames:
+  - _default
+  - platformer
+  - buggy
+  actionSetObjects:
+  - {fileID: 11400000, guid: 60831c5e0180bf045af744fa85b4de80, type: 2}
+  - {fileID: 11400000, guid: b69582b2355b1ec42b214c6aed56dd2c, type: 2}
+  - {fileID: 11400000, guid: 285067711f52e42448c39ce6003114e5, type: 2}
+  actionNames:
+  - __actions_default_in_InteractUI
+  - __actions_default_in_Teleport
+  - __actions_default_in_GrabPinch
+  - __actions_default_in_GrabGrip
+  - __actions_default_in_Pose
+  - __actions_default_in_Squeeze
+  - __actions_default_out_Haptic
+  - __actions_platformer_in_Move
+  - __actions_platformer_in_Jump
+  - __actions_buggy_in_Steering
+  - __actions_buggy_in_Throttle
+  - __actions_buggy_in_Brake
+  - __actions_buggy_in_Reset
+  actionObjects:
+  - {fileID: 11400000, guid: c7e670998e92b7545823d49770096aec, type: 2}
+  - {fileID: 11400000, guid: 71db2a016c226b6429bc097fec193e8f, type: 2}
+  - {fileID: 11400000, guid: aee91a76c94e9f543821300f787747d3, type: 2}
+  - {fileID: 11400000, guid: bd94bf6b2b1248244a299a06696163fe, type: 2}
+  - {fileID: 11400000, guid: 8e1ac968450b4c643a1383c113a9ac34, type: 2}
+  - {fileID: 11400000, guid: 4af9fd29540a8a84c9b3c932a4926384, type: 2}
+  - {fileID: 11400000, guid: 00d74c320b1e2cd419d037cd66677f21, type: 2}
+  - {fileID: 11400000, guid: 2e780aa3ec02f67458b191439ef3de23, type: 2}
+  - {fileID: 11400000, guid: 8cd5e377b512a3642bb56e20e99a9b34, type: 2}
+  - {fileID: 11400000, guid: 4fc12309ba91b374cb3bbdb1820b25c9, type: 2}
+  - {fileID: 11400000, guid: 5d5bf7ec03e05814f96dc11ef6d1889c, type: 2}
+  - {fileID: 11400000, guid: 26463f659e56beb4eaea87cb46c3b6c1, type: 2}
+  - {fileID: 11400000, guid: b582057e880900d4d8029c7332e9d92d, type: 2}
