@@ -1,10 +1,11 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 using UnityEngine;
 using System.Collections;
+using Valve.VR;
 
 public struct PointerEventArgs
 {
-    public uint controllerIndex;
+    public SteamVR_Input_Sources inputSources;
     public uint flags;
     public float distance;
     public Transform target;
@@ -25,6 +26,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
     public Transform reference;
     public event PointerEventHandler PointerIn;
     public event PointerEventHandler PointerOut;
+    public SteamVR_Action_Boolean interactUI;
 
     Transform previousContact = null;
 
@@ -87,7 +89,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
 
         float dist = 100f;
 
-        SteamVR_TrackedController controller = GetComponent<SteamVR_TrackedController>();
+        SteamVR_Behaviour_Pose controller = GetComponent<SteamVR_Behaviour_Pose>();
 
         Ray raycast = new Ray(transform.position, transform.forward);
         RaycastHit hit;
@@ -98,7 +100,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             PointerEventArgs args = new PointerEventArgs();
             if (controller != null)
             {
-                args.controllerIndex = controller.controllerIndex;
+                args.inputSources = controller.inputSource;
             }
             args.distance = 0f;
             args.flags = 0;
@@ -111,7 +113,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             PointerEventArgs argsIn = new PointerEventArgs();
             if (controller != null)
             {
-                argsIn.controllerIndex = controller.controllerIndex;
+                argsIn.inputSources = controller.inputSource;
             }
             argsIn.distance = hit.distance;
             argsIn.flags = 0;
@@ -128,7 +130,7 @@ public class SteamVR_LaserPointer : MonoBehaviour
             dist = hit.distance;
         }
 
-        if (controller != null && controller.triggerPressed)
+        if (controller != null && interactUI.GetState(controller.inputSource))
         {
             pointer.transform.localScale = new Vector3(thickness * 5f, thickness * 5f, dist);
         }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Valve.VR;
 
 public class UIClicker : MonoBehaviour
 {
@@ -28,16 +29,11 @@ public class UIClicker : MonoBehaviour
 				bool hit = ((RectTransform)transform).rect.Contains(new Vector2(localTarget.x, localTarget.y));
 
 
-				uint controllerIndex = (uint)pointer.GetComponent<SteamVR_TrackedObject>().index;
-				Valve.VR.VRControllerState_t controllerState = new Valve.VR.VRControllerState_t();
-				uint size = (uint)System.Runtime.InteropServices.Marshal.SizeOf(typeof(Valve.VR.VRControllerState_t));
-				if (SteamVR.instance.hmd.GetControllerState(controllerIndex, ref controllerState, size))
+				SteamVR_Input_Sources inputSource = pointer.GetComponent<SteamVR_Behaviour_Pose>().inputSource;
+				bool trigger = pointer.interactUI.GetStateDown(inputSource);
+				if (hit && Clicked != null && trigger)
 				{
-					bool trigger = (controllerState.ulButtonPressed & (1UL << ((int)Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger))) > 0;
-					if (hit && Clicked != null && trigger)
-					{
-						Clicked();
-					}
+					Clicked();
 				}
 			}
 		}
