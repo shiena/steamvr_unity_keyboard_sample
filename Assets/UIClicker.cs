@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Valve.VR;
+using Valve.VR.Extras;
 
 public class UIClicker : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class UIClicker : MonoBehaviour
 
 
 				SteamVR_Input_Sources inputSource = pointer.GetComponent<SteamVR_Behaviour_Pose>().inputSource;
-				bool trigger = pointer.interactUI.GetStateDown(inputSource);
+				bool trigger = pointer.interactWithUI.GetStateDown(inputSource);
 				if (hit && Clicked != null && trigger)
 				{
 					Clicked();
