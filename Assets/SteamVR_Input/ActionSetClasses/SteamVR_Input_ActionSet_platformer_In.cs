@@ -17,8 +17,14 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_platformer_In : Valve.VR.SteamVR_Action_List
     {
         
-        public Valve.VR.SteamVR_Action_Vector2 Move;
+        public SteamVR_Action_Vector2 Move;
         
-        public Valve.VR.SteamVR_Action_Boolean Jump;
+        public SteamVR_Action_Boolean Jump;
+        
+        public SteamVR_Input_ActionSet_platformer_In()
+        {
+            this.Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create <SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
+            this.Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create <SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));
+        }
     }
 }

@@ -17,6 +17,11 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_default_Out : Valve.VR.SteamVR_Action_List
     {
         
-        public Valve.VR.SteamVR_Action_Vibration Haptic;
+        public SteamVR_Action_Vibration Haptic;
+        
+        public SteamVR_Input_ActionSet_default_Out()
+        {
+            this.Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create <SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
+        }
     }
 }
