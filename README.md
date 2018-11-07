@@ -4,5 +4,5 @@ Copy from [unity_keyboard_sample](https://github.com/ValveSoftware/openvr/tree/m
 
 ## Requirement
 
-* [SteamVR Unity Plugin v.2.0.1](https://github.com/ValveSoftware/steamvr_unity_plugin/releases/tag/2.0.1)
+* [SteamVR Unity Plugin v2.1b2](https://github.com/ValveSoftware/steamvr_unity_plugin/releases/tag/2.1b2)
 
