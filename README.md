@@ -1,6 +1,6 @@
 # unity_keyboard_sample
 
-Copy from [unity_keyboard_sample](https://github.com/ValveSoftware/openvr/tree/master/samples/unity_keyboard_sample) and convert to Unity2018.2
+Copy from [unity_keyboard_sample](https://github.com/ValveSoftware/openvr/tree/master/samples/unity_keyboard_sample) and convert to Unity2019.3
 
 ## Requirement
 
