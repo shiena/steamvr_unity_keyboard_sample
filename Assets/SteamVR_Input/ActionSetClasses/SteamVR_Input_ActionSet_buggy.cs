@@ -17,6 +17,36 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_buggy : Valve.VR.SteamVR_ActionSet
     {
         
-        public SteamVR_Input_ActionSet_buggy_In inActions;
+        public virtual SteamVR_Action_Vector2 Steering
+        {
+            get
+            {
+                return SteamVR_Actions.buggy_Steering;
+            }
+        }
+        
+        public virtual SteamVR_Action_Single Throttle
+        {
+            get
+            {
+                return SteamVR_Actions.buggy_Throttle;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Brake
+        {
+            get
+            {
+                return SteamVR_Actions.buggy_Brake;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Reset
+        {
+            get
+            {
+                return SteamVR_Actions.buggy_Reset;
+            }
+        }
     }
 }

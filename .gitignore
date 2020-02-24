@@ -137,3 +137,6 @@ sysinfo.txt
 
 
 # End of https://www.gitignore.io/api/rider,unity
+
+/Assets/SteamVR/
+/Assets/SteamVR.meta
