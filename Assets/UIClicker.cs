@@ -31,7 +31,7 @@ public class UIClicker : MonoBehaviour
 
 
 				SteamVR_Input_Sources inputSource = pointer.GetComponent<SteamVR_Behaviour_Pose>().inputSource;
-				bool trigger = pointer.interactWithUI.GetStateDown(inputSource);
+				bool trigger = pointer.interactWithUI.GetLastStateDown(inputSource);
 				if (hit && Clicked != null && trigger)
 				{
 					Clicked();
