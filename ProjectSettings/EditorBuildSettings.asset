@@ -4,4 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/KeyboardSample.unity
+    guid: ba9f2e2919f4f24428e584ffde3de276
+  m_configObjects: {}
