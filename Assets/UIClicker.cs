@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 using Valve.VR;
 using Valve.VR.Extras;
 
@@ -9,12 +8,6 @@ public class UIClicker : MonoBehaviour
 
 	public event ClickHandler Clicked;
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{

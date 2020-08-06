@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 using Valve.VR;
 
 public class KeyboardSample : MonoBehaviour
@@ -101,11 +100,5 @@ public class KeyboardSample : MonoBehaviour
 			activeKeyboard = this;
 			SteamVR.instance.overlay.ShowKeyboard((int)EGamepadTextInputMode.k_EGamepadTextInputModeNormal, (int)EGamepadTextInputLineMode.k_EGamepadTextInputLineModeSingleLine, "Description", 256, text, minimalMode, 0);
 		}
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-		
 	}
 }
