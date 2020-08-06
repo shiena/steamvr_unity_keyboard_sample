@@ -4,7 +4,7 @@ using Valve.VR;
 public class KeyboardSample : MonoBehaviour
 {
 	public UnityEngine.UI.InputField textEntry;
-	public bool minimalMode;
+	public EKeyboardFlags KeyboardFlags;
 	private static bool keyboardShowing;
 	private string text = "";
 	private static KeyboardSample activeKeyboard = null;
@@ -64,7 +64,7 @@ public class KeyboardSample : MonoBehaviour
 		for (; inputBytes[len] != 0 && len < 7; len++) ;
 		string input = System.Text.Encoding.UTF8.GetString(inputBytes, 0, len);
 
-		if (minimalMode)
+		if (KeyboardFlags == EKeyboardFlags.KeyboardFlag_Minimal)
 		{
 			if (input == "\b")
 			{
@@ -109,7 +109,7 @@ public class KeyboardSample : MonoBehaviour
 		{
 			keyboardShowing = true;
 			activeKeyboard = this;
-			SteamVR.instance.overlay.ShowKeyboard((int)EGamepadTextInputMode.k_EGamepadTextInputModeNormal, (int)EGamepadTextInputLineMode.k_EGamepadTextInputLineModeSingleLine, "Description", 256, text, minimalMode, 0);
+			SteamVR.instance.overlay.ShowKeyboard((int) EGamepadTextInputMode.k_EGamepadTextInputModeNormal, (int) EGamepadTextInputLineMode.k_EGamepadTextInputLineModeSingleLine, (uint) KeyboardFlags,"Description", 256, text, 0);
 		}
 	}
 }
