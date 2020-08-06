@@ -5,9 +5,9 @@ public class KeyboardSample : MonoBehaviour
 {
 	public UnityEngine.UI.InputField textEntry;
 	public bool minimalMode;
-	static bool keyboardShowing;
-	string text = "";
-	static KeyboardSample activeKeyboard = null;
+	private static bool keyboardShowing;
+	private string text = "";
+	private static KeyboardSample activeKeyboard = null;
 	private SteamVR_Events.Action keyboardCharInputAction;
 	private SteamVR_Events.Action keyboardClosedAction;
 
@@ -18,12 +18,12 @@ public class KeyboardSample : MonoBehaviour
 	}
 
 	// Use this for initialization
-	void Start ()
+	private void Start ()
 	{
 		GetComponent<UIClicker>().Clicked += KeyboardDemo_Clicked;
 	}
 
-	void OnEnable()
+	private void OnEnable()
 	{
 #if UNITY_EDITOR
             if (!Application.isPlaying)
@@ -33,7 +33,7 @@ public class KeyboardSample : MonoBehaviour
 		keyboardClosedAction.enabled = true;
 	}
 
-	void OnDisable()
+	private void OnDisable()
 	{
 #if UNITY_EDITOR
             if (!Application.isPlaying)

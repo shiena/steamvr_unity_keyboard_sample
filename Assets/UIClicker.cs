@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
 using Valve.VR.Extras;
 
@@ -9,7 +9,7 @@ public class UIClicker : MonoBehaviour
 	public event ClickHandler Clicked;
 
 	// Update is called once per frame
-	void Update ()
+	private void Update ()
 	{
 		foreach(SteamVR_LaserPointer pointer in FindObjectsOfType<SteamVR_LaserPointer>())
 		{
