@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
 
 public class KeyboardSample : MonoBehaviour
@@ -10,17 +10,24 @@ public class KeyboardSample : MonoBehaviour
 	private static KeyboardSample activeKeyboard = null;
 	private SteamVR_Events.Action keyboardCharInputAction;
 	private SteamVR_Events.Action keyboardClosedAction;
-
-	KeyboardSample()
-	{
-		keyboardCharInputAction = SteamVR_Events.SystemAction(EVREventType.VREvent_KeyboardCharInput, OnKeyboard);
-		keyboardClosedAction = SteamVR_Events.SystemAction(EVREventType.VREvent_KeyboardClosed, OnKeyboardClosed);
-	}
+	private UIClicker uiClicker;
 
 	// Use this for initialization
 	private void Start ()
 	{
-		GetComponent<UIClicker>().Clicked += KeyboardDemo_Clicked;
+		uiClicker = GetComponent<UIClicker>();
+		if (uiClicker != null)
+		{
+			uiClicker.Clicked += KeyboardDemo_Clicked;
+		}
+	}
+
+	private void OnDestroy()
+	{
+		if (uiClicker != null)
+		{
+			uiClicker.Clicked -= KeyboardDemo_Clicked;
+		}
 	}
 
 	private void OnEnable()
@@ -29,7 +36,9 @@ public class KeyboardSample : MonoBehaviour
             if (!Application.isPlaying)
                 return;
 #endif
+		keyboardCharInputAction = SteamVR_Events.SystemAction(EVREventType.VREvent_KeyboardCharInput, OnKeyboard);
 		keyboardCharInputAction.enabled = true;
+		keyboardClosedAction = SteamVR_Events.SystemAction(EVREventType.VREvent_KeyboardClosed, OnKeyboardClosed);
 		keyboardClosedAction.enabled = true;
 	}
 
@@ -40,7 +49,9 @@ public class KeyboardSample : MonoBehaviour
                 return;
 #endif
 		keyboardCharInputAction.enabled = false;
+		keyboardCharInputAction = null;
 		keyboardClosedAction.enabled = false;
+		keyboardClosedAction = null;
 	}
 
 	private void OnKeyboard(VREvent_t ev)
